@@ -13,11 +13,11 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-  
+          
   jobs:
-      build:
-       runs-on: ubuntu-latest
-       steps:
+        runs-on: ubuntu-latest
+        steps:
+         - name: DB
          - uses: actions/checkout@v2
          - uses: akhileshns/heroku-deploy@v3.12.12
            with:
@@ -29,3 +29,4 @@ jobs:
          - run: | 
               heroku addons:create heroku-postgresql -a ${{ secrets.HEROKU_APP_NAME }}
              # heroku pg:promote HEROKU_POSTGRESQL_INSTANCE
+
